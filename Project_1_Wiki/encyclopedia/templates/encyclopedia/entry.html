@@ -1,0 +1,24 @@
+<!-- Page Displayed on Requested Title-->
+
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+
+<!-- Display the Title of the Entry-->
+    {{title|safe}}
+
+{% endblock %}
+
+<!-- Display the Afferent Content -->
+<!-- |safe used to allow for an HTML string to be outputted -->
+{% block body %}
+
+    {{ content|safe }}
+
+    <form action="{% url 'edit_page' %}" method="POST">
+        {% csrf_token %} 
+        <input type="hidden" name="entry_title" value="{{ title }}">
+        <input type="submit" value="Edit" class="btn btn-danger">
+    </form>
+
+{% endblock %}

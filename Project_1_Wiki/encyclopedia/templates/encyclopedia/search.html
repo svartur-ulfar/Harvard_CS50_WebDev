@@ -1,0 +1,20 @@
+<!-- Recommendation Page based on subquery entry-->
+
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Search Results</h1>
+
+    <ul>
+        {% for entry in recommendation %}
+        <!--user can click on any entry name to be taken directly to that entry page-->
+            <li><a href="{% url 'entry' title=entry %}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+

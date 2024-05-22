@@ -1,0 +1,24 @@
+<!-- New Page Created by User-->
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>New Page</h1>
+
+    <!-- Create one input for the title and one for the content-->
+    <form action="{% url 'new_page' %}" method="POST">
+        {% csrf_token %}
+        <label>Title:</label>
+        <input type="text" name="title" placeholder="Enter Page Title">
+        <br/>
+        <label>Content: </label>
+        <br/>
+        <textarea name="content" placeholder="Enter Markdown Content: # " ></textarea>
+        <br/>
+        <input type="submit" value="Submit Page" class="btn btn-primary">
+    </form>
+
+{% endblock %}
