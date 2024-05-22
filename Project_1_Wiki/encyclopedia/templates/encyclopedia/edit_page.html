@@ -1,0 +1,27 @@
+<!-- Edit Page Requested by User-->
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Page</h1>
+
+    <!-- Create one input for the title and one for the content-->
+    <!-- Create new url to redirect to Edited Page-->
+    <form action="{% url 'save_page' %}" method="POST">
+        {% csrf_token %}
+        <label>Title:</label>
+        <!-- value = "" to pre-populate the title area-->
+        <input type="text" name="title" placeholder="Enter Page Title" value="{{ title  }}">
+        <br/>
+        <label>Content: </label>
+        <br/>
+        <!-- {{ content }} to pre-populate the content area-->
+        <textarea name="content" placeholder="Enter Markdown Content: # " >{{ content }}</textarea>
+        <br/>
+        <input type="submit" value="Edit Page" class="btn btn-danger">
+    </form>
+
+{% endblock %}
